@@ -11,24 +11,38 @@
         <h1 class="text-light text-center">Weather Dashboard</h1>
     </header>
 
-    <main class="container d-flex justify-space-around mx-0">
-        <div class="row">
+    <main class="container-fluid mx-0">
+        <div class="row d-flex">
             <div class="col-md-3 bg-light">
-                <label for="city-search">Search for a City: </label>
-                <input type="text" name="city-search">
-                <button class="btn border" type="submit"></button>
-                <ul></ul>
+                <div class="p-3">
+                    <label for="city-search" class="form-label">Search for a City: </label>
+                    <input type="text" name="city-search" id="city-search" class="form-input" autofocus="true">
+                    <button id="btn-submit" class="btn border" type="submit">Search</button>
+                </div>
+                <ul>
+                    <button class="btn w-100 border">Button</button>
+                </ul>
             </div>
             <div class="col-md-9">
-                <div class="border">
-                    <h2>The City Goes Here</h2>
-                    <p>Temperature</p>
-                    <p>Humidity</p>
-                    <p>Wind Speed</p>
-                    <p>UV Index</p>
+                <div class="border p-3">
+                    <div>
+                        <h2 id="city-name-date"></h2>
+                        <div id="icon"><img id="w-icon" src=""></div>
+                    </div>
+                    <p>Temperature: <span id="current-temp"></span></p>
+                    <p>Humidity: <span id="current-hum"></span></p>
+                    <p>Wind Speed: <span id="current-wind-sp"></span></p>
+                    <p>UV Index: <span id="current-uv"></span></p>
                 </div>
-                <div class="">
-                    <div class="card">Sample</div>
+                <div class="d-flex justify-content-around">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Sample</h4>
+                            <i>Sample</i>
+                            <p>Sample</p>
+                            <p>Sample</p>
+                        </div>
+                    </div>
                     <div class="card">Sample</div>
                     <div class="card">Sample</div>
                     <div class="card">Sample</div>
@@ -40,6 +54,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="./assets/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
