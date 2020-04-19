@@ -1,4 +1,6 @@
 var submitBtnEl = document.querySelector("#btn-submit");
+var pastCallEl = document.querySelector("#past-call-btns");
+var history = {};
 
 //City search handler, sends input data to other functions
 var citySearch = function () {
@@ -6,15 +8,11 @@ var citySearch = function () {
 
     var city = $("#city-search").val();
 
-    // apiCurrentCall(city);
-    // apiForecastCall(city);
+    apiCurrentCall(city);
+    apiForecastCall(city);
+    //searchHistory(city);
 
     $("#city-search").val("");
-    
-}
-
-var pastSearchHandler = function (city) {
-    console.log(city)
 }
 
 // Calls Weather API for current weather conditions
@@ -155,6 +153,11 @@ var apiForecastCall = function (city) {
             alert("Error: " + response.statusText);
         }
     })
+}
+
+var searchHistory = function (city) {
+    console.log(city);
+
 }
 
 submitBtnEl.addEventListener("click", citySearch);
