@@ -63,7 +63,7 @@ var apiCurrentCall = function (city) {
                                 $("#current-uv").removeClass("bg-warning bg-danger").addClass("bg-success");
                             } else if (uvValue >= 4 && uvValue <= 7.99) {
                                 $("#current-uv").removeClass("bg-success bg-danger").addClass("bg-warning");
-                            } else if (uvValue >= 8 && uvValue <= 12) {
+                            } else if (uvValue >= 8 && uvValue <= 20) {
                                 $("#current-uv").removeClass("bg-success bg-warning").addClass("bg-danger");
                             }
                         });
@@ -88,64 +88,63 @@ var apiForecastCall = function (city) {
             response.json().then(function (data) {
 
                 //First Forecast Day
-                $("#fore-first-temp").text("Temp: " + data.list[1].main.temp + "°F");
-                $("#fore-first-hum").text("Humidity: " + data.list[1].main.humidity + "%");
+                $("#fore-first-temp").text("Temp: " + data.list[6].main.temp + "°F");
+                $("#fore-first-hum").text("Humidity: " + data.list[6].main.humidity + "%");
                 //First weather icon
-                var firstIconCode = data.list[1].weather[0].icon;
+                var firstIconCode = data.list[6].weather[0].icon;
                 var firstIconUrl = "http://openweathermap.org/img/w/" + firstIconCode + ".png"
                 $("#fore-first-icon").attr("src", firstIconUrl);
 
                 //Converting first date and appending to first forecast element
-                var foreDateOne = new Date(data.list[1].dt * 1000);
+                var foreDateOne = new Date(data.list[6].dt * 1000);
                 $("#fore-first-dt").text(foreDateOne.toLocaleDateString());
 
                 //Second Forecast Day
-                $("#fore-second-temp").text("Temp: " + data.list[9].main.temp + "°F");
-                $("#fore-second-hum").text("Humidity: " + data.list[9].main.humidity + "%");
+                $("#fore-second-temp").text("Temp: " + data.list[14].main.temp + "°F");
+                $("#fore-second-hum").text("Humidity: " + data.list[14].main.humidity + "%");
                 //Second weather icon
-                var secondIconCode = data.list[9].weather[0].icon;
+                var secondIconCode = data.list[14].weather[0].icon;
                 var secondIconUrl = "http://openweathermap.org/img/w/" + secondIconCode + ".png"
                 $("#fore-second-icon").attr("src", secondIconUrl);
 
                 //Converting second date and appending to second forecast element
-                var foreDateTwo = new Date(data.list[9].dt * 1000);
+                var foreDateTwo = new Date(data.list[14].dt * 1000);
                 $("#fore-second-dt").text(foreDateTwo.toLocaleDateString());
 
                 //Third Forecast Day
-                $("#fore-third-temp").text("Temp: " + data.list[17].main.temp + "°F");
-                $("#fore-third-hum").text("Humidity: " + data.list[17].main.humidity + "%");
+                $("#fore-third-temp").text("Temp: " + data.list[22].main.temp + "°F");
+                $("#fore-third-hum").text("Humidity: " + data.list[22].main.humidity + "%");
                 //Third weather icon
-                var thirdIconCode = data.list[17].weather[0].icon;
+                var thirdIconCode = data.list[22].weather[0].icon;
                 var thirdIconUrl = "http://openweathermap.org/img/w/" + thirdIconCode + ".png"
                 $("#fore-third-icon").attr("src", thirdIconUrl);
 
                 //Converting third date and appending to third forecast element
-                var foreDateThree = new Date(data.list[17].dt * 1000);
+                var foreDateThree = new Date(data.list[22].dt * 1000);
                 $("#fore-third-dt").text(foreDateThree.toLocaleDateString());
 
                 //Fourth Forecast Day
-                $("#fore-fourth-temp").text("Temp: " + data.list[25].main.temp + "°F");
-                $("#fore-fourth-hum").text("Humidity: " + data.list[25].main.humidity + "%");
+                $("#fore-fourth-temp").text("Temp: " + data.list[30].main.temp + "°F");
+                $("#fore-fourth-hum").text("Humidity: " + data.list[30].main.humidity + "%");
                 //Fourth weather icon
-                var fourthIconCode = data.list[25].weather[0].icon;
+                var fourthIconCode = data.list[30].weather[0].icon;
                 var fourthIconUrl = "http://openweathermap.org/img/w/" + fourthIconCode + ".png"
                 $("#fore-fourth-icon").attr("src", fourthIconUrl);
 
                 //Converting fourth date and appending to fourth forecast element
-                var foreDateFour = new Date(data.list[25].dt * 1000);
+                var foreDateFour = new Date(data.list[30].dt * 1000);
                 $("#fore-fourth-dt").text(foreDateFour.toLocaleDateString());
 
                 //Fifth Forecast Day
-                // console.log(data.list[33]);
-                $("#fore-fifth-temp").text("Temp: " + data.list[33].main.temp + "°F");
-                $("#fore-fifth-hum").text("Humidity: " + data.list[33].main.humidity + "%");
+                $("#fore-fifth-temp").text("Temp: " + data.list[38].main.temp + "°F");
+                $("#fore-fifth-hum").text("Humidity: " + data.list[38].main.humidity + "%");
                 //Fifth weather icon
-                var fifthIconCode = data.list[33].weather[0].icon;
+                var fifthIconCode = data.list[38].weather[0].icon;
                 var fifthIconUrl = "http://openweathermap.org/img/w/" + fifthIconCode + ".png"
                 $("#fore-fifth-icon").attr("src", fifthIconUrl);
 
                 //Converting fifth date and appending to fifth forecast element
-                var foreDateFive = new Date(data.list[33].dt * 1000);
+                var foreDateFive = new Date(data.list[38].dt * 1000);
                 $("#fore-fifth-dt").text(foreDateFive.toLocaleDateString());
 
             })
