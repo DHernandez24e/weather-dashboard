@@ -6,15 +6,15 @@ var citySearch = function () {
 
     var city = $("#city-search").val();
 
-    apiCurrentCall(city);
-    apiForecastCall(city);
+    // apiCurrentCall(city);
+    // apiForecastCall(city);
 
     $("#city-search").val("");
     
 }
 
 var pastSearchHandler = function (city) {
-
+    console.log(city)
 }
 
 // Calls Weather API for current weather conditions
@@ -53,10 +53,22 @@ var apiCurrentCall = function (city) {
                 fetch(uvApiUrl).then(function (response) {
                     if (response.ok) {
                         response.json().then(function (data) {
+                            //Setting UV Index value to variable
+                            var uvValue = data.value;
 
                             //Appending UV Index to appropriate element
-                            $("#current-uv").text("UV Index: " + data.value);
-                        })
+                            $("#current-uv").text(uvValue);
+
+                            //If statements for different ratings of UV index
+                            // 0-3 Green, 4-7 Yellow, 8-11 Red
+                            if (uvValue >= 0 && uvValue <= 3.99 ) {
+                                $("#current-uv").removeClass("bg-warning bg-danger").addClass("bg-success");
+                            } else if (uvValue >= 4 && uvValue <= 7.99) {
+                                $("#current-uv").removeClass("bg-success bg-danger").addClass("bg-warning");
+                            } else if (uvValue >= 8 && uvValue <= 12) {
+                                $("#current-uv").removeClass("bg-success bg-warning").addClass("bg-danger");
+                            }
+                        });
                     } else {
                         alert("Error: " + response.statusText);
                     }
