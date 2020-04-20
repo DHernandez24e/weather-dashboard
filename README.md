@@ -8,4 +8,4 @@ Searches are saved to buttons on the side of the page, and on click will bring u
 
 On page reload, prior searches will remain on the page
 
-5 day forecast is based on calls at 1800 GMT
+5 day forecast is based on data from 1800 hrs GMT
