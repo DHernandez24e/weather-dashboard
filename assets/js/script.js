@@ -1,6 +1,6 @@
-var submitBtnEl = document.querySelector("#btn-submit");
-var pastCallEl = document.querySelector("#past-call-btns");
-var history = {};
+var submitEl = document.querySelector("#form-submit");
+var pastCallEl = document.querySelector("#past-call-ul");
+var historyArr = [];
 
 //City search handler, sends input data to other functions
 var citySearch = function () {
@@ -8,11 +8,17 @@ var citySearch = function () {
 
     var city = $("#city-search").val();
 
-    apiCurrentCall(city);
-    apiForecastCall(city);
-    //searchHistory(city);
+    //Prevents blank values from being saved
+    if (city) {
+        // apiCurrentCall(city);
+    // apiForecastCall(city);
+    saveHistory(city);
 
+    //Clears submit form
     $("#city-search").val("");
+    } else {
+        alert("Please insert a city name");
+    }
 }
 
 // Calls Weather API for current weather conditions
@@ -154,9 +160,27 @@ var apiForecastCall = function (city) {
     })
 }
 
-var searchHistory = function (city) {
-    console.log(city);
+var saveHistory = function (city) {
 
+    //Create list item with city name
+    var historyEl = $("<button>" + city + "</button>")
+    .attr("type", "button")
+    .addClass("list-group-item list-group-item-action");
+    //Appending created list item to home element
+    $(pastCallEl).append(historyEl);
+
+    //Add city to history array
+    historyArr.push(city);
+
+    //Save to local storage
+    localStorage.setItem("city", JSON.stringify(historyArr));
 }
 
-submitBtnEl.addEventListener("click", citySearch);
+var searchPrevious = function () {
+    event.preventDefault();
+
+    
+}
+
+submitEl.addEventListener("submit", citySearch);
+pastCallEl.addEventListener("click", searchPrevious);

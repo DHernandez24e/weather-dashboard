@@ -18,15 +18,12 @@
         <div class="row d-flex">
             <!-- Search Box and Previous Calls -->
             <div class="col-md-3 bg-light">
-                <div class="p-3">
+                <form id="form-submit" class="p-3">
                     <label for="city-search" class="form-label">Search for a City: </label>
                     <input type="text" name="city-search" id="city-search" class="form-input mr-2" autofocus="true">
                     <button id="btn-submit" class="btn border active" type="submit"><span class="oi oi-magnifying-glass"></span></button>
-                </div>
-                <ul id="past-call-btns">
-                    <button class="btn w-100 border">Button</button>
-                    <button class="btn w-100 border">Button</button>
-                </ul>
+                </form>
+                <ul class="list-group" id="past-call-ul"></ul>
             </div>
             <!-- Current Weather -->
             <div id="current-weather-container" class="col-md-9 d-none">
