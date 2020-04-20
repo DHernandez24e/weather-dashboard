@@ -8,18 +8,18 @@ var citySearch = function () {
 
     var city = $("#city-search").val();
 
-    //Prevents blank values from being saved
+    //Prevents blank values from being saved, sends argument to functions
     if (city) {
-        // apiCurrentCall(city);
-    // apiForecastCall(city);
-    saveHistory(city);
+        apiCurrentCall(city);
+        apiForecastCall(city);
+        saveHistory(city);
 
-    //Clears submit form
-    $("#city-search").val("");
+        //Clears submit form
+        $("#city-search").val("");
     } else {
         alert("Please insert a city name");
     }
-}
+};
 
 // Calls Weather API for current weather conditions
 var apiCurrentCall = function (city) {
@@ -160,6 +160,7 @@ var apiForecastCall = function (city) {
     })
 }
 
+//Saving previous calls to a list, adding to array and saving to localStorage
 var saveHistory = function (city) {
 
     //Create list item with city name
@@ -176,11 +177,44 @@ var saveHistory = function (city) {
     localStorage.setItem("city", JSON.stringify(historyArr));
 }
 
-var searchPrevious = function () {
+//Handler for buttons to call previous search results
+var searchPrevious = function (event) {
     event.preventDefault();
 
-    
+    //Grabbing button text on event trigger
+    var city = event.target.innerHTML;
+
+    //Calling API calls from search items
+    apiCurrentCall(city);
+    apiForecastCall(city);
+}
+
+//Load previous search results on page refresh
+var loadHistory = function () {
+
+    //Grab data from localStorage
+    var searchResults = localStorage.getItem("city");
+
+    //Check if localStorage is empty
+    if (!searchResults) {
+        return false;
+    };
+
+    //Parse data back into an object
+    historyArr = JSON.parse(searchResults);
+
+    //For loop to reiterate elements back to list
+    for (var i = 0; i < historyArr.length; i++) {
+        var historyEl = $("<button>" + historyArr[i] + "</button>")
+        .attr("type", "button")
+        .addClass("list-group-item list-group-item-action");
+        //Appending created list item to home element
+        $(pastCallEl).append(historyEl);
+    };
+
 }
 
 submitEl.addEventListener("submit", citySearch);
 pastCallEl.addEventListener("click", searchPrevious);
+
+loadHistory();
