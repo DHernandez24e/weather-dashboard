@@ -35,7 +35,7 @@ var apiCurrentCall = function (city) {
 
                 //Grabbing weather icons and appending them via img tag
                 var iconCode = data.weather[0].icon;
-                var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png"
+                var iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png"
 
                 //Getting date from epoc time, converting to calendar date and appending to element
                 var currentDate = new Date(data.dt * 1000);
@@ -100,7 +100,7 @@ var apiForecastCall = function (city) {
                 $("#fore-first-hum").text("Humidity: " + data.list[6].main.humidity + "%");
                 //First weather icon
                 var firstIconCode = data.list[6].weather[0].icon;
-                var firstIconUrl = "http://openweathermap.org/img/w/" + firstIconCode + ".png"
+                var firstIconUrl = "https://openweathermap.org/img/w/" + firstIconCode + ".png"
                 $("#fore-first-icon").attr("src", firstIconUrl);
 
                 //Converting first date and appending to first forecast element
@@ -112,7 +112,7 @@ var apiForecastCall = function (city) {
                 $("#fore-second-hum").text("Humidity: " + data.list[14].main.humidity + "%");
                 //Second weather icon
                 var secondIconCode = data.list[14].weather[0].icon;
-                var secondIconUrl = "http://openweathermap.org/img/w/" + secondIconCode + ".png"
+                var secondIconUrl = "https://openweathermap.org/img/w/" + secondIconCode + ".png"
                 $("#fore-second-icon").attr("src", secondIconUrl);
 
                 //Converting second date and appending to second forecast element
@@ -124,7 +124,7 @@ var apiForecastCall = function (city) {
                 $("#fore-third-hum").text("Humidity: " + data.list[22].main.humidity + "%");
                 //Third weather icon
                 var thirdIconCode = data.list[22].weather[0].icon;
-                var thirdIconUrl = "http://openweathermap.org/img/w/" + thirdIconCode + ".png"
+                var thirdIconUrl = "https://openweathermap.org/img/w/" + thirdIconCode + ".png"
                 $("#fore-third-icon").attr("src", thirdIconUrl);
 
                 //Converting third date and appending to third forecast element
@@ -136,7 +136,7 @@ var apiForecastCall = function (city) {
                 $("#fore-fourth-hum").text("Humidity: " + data.list[30].main.humidity + "%");
                 //Fourth weather icon
                 var fourthIconCode = data.list[30].weather[0].icon;
-                var fourthIconUrl = "http://openweathermap.org/img/w/" + fourthIconCode + ".png"
+                var fourthIconUrl = "https://openweathermap.org/img/w/" + fourthIconCode + ".png"
                 $("#fore-fourth-icon").attr("src", fourthIconUrl);
 
                 //Converting fourth date and appending to fourth forecast element
@@ -148,7 +148,7 @@ var apiForecastCall = function (city) {
                 $("#fore-fifth-hum").text("Humidity: " + data.list[38].main.humidity + "%");
                 //Fifth weather icon
                 var fifthIconCode = data.list[38].weather[0].icon;
-                var fifthIconUrl = "http://openweathermap.org/img/w/" + fifthIconCode + ".png"
+                var fifthIconUrl = "https://openweathermap.org/img/w/" + fifthIconCode + ".png"
                 $("#fore-fifth-icon").attr("src", fifthIconUrl);
 
                 //Converting fifth date and appending to fifth forecast element
