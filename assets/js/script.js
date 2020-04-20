@@ -93,6 +93,8 @@ var apiForecastCall = function (city) {
         if (response.ok) {
             response.json().then(function (data) {
 
+                //Forecast data based on 1100 hrs PST for each day. Data varies when presented different time zones.
+
                 //First Forecast Day
                 $("#fore-first-temp").text("Temp: " + data.list[6].main.temp + "°F");
                 $("#fore-first-hum").text("Humidity: " + data.list[6].main.humidity + "%");
@@ -214,7 +216,9 @@ var loadHistory = function () {
 
 }
 
+//Event listeners, for clarity instead of jQuery :)
 submitEl.addEventListener("submit", citySearch);
 pastCallEl.addEventListener("click", searchPrevious);
 
+//Calls on page load
 loadHistory();
