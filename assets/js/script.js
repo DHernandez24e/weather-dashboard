@@ -52,7 +52,7 @@ var apiCurrentCall = function (city) {
                 var lon = data.coord.lon;
                 var lat = data.coord.lat;
                 //UV Index API call
-                var uvApiUrl = "http://api.openweathermap.org/data/2.5/uvi?appid=6846f778fdbdbb000e63e44f82ef974e&lat=" + lat + "&lon=" + lon;
+                var uvApiUrl = "https://api.openweathermap.org/data/2.5/uvi?appid=6846f778fdbdbb000e63e44f82ef974e&lat=" + lat + "&lon=" + lon;
 
                 fetch(uvApiUrl).then(function (response) {
                     if (response.ok) {
